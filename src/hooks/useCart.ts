@@ -1,10 +1,11 @@
 import { useState, useEffect, useMemo } from 'react'
 import { db } from '../data/db'
+import { Guitar } from '../types'
 
 const useCart = () => {
 
   // Verificar si loalStorage tiene algo
-  const initialCart = () => {
+  const initialCart = () : Guitar[] => {
     const localStorageCart = localStorage.getItem('cart')
     return localStorageCart ? JSON.parse(localStorageCart) : []
   }

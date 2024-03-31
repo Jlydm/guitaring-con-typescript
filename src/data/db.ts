@@ -1,3 +1,5 @@
+import { Guitar } from "../types"
+
 export const db : Guitar[] = [
   {
       id: 1,
