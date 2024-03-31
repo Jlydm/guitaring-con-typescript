@@ -1,11 +1,4 @@
-// Estructura de TypeScript usando "type"
-type Guitar = {
-  id: number
-  name: string
-  image: string
-  description: string
-  price: number
-}
+import { Guitar } from "../types"
 
 // type separate
 type GuitarProps = {
