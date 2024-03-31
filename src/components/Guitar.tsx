@@ -1,3 +1,4 @@
+// Estructura de TypeScript usando "type"
 type Guitar = {
   id: number
   name: string
@@ -6,7 +7,13 @@ type Guitar = {
   price: number
 }
 
-export default function Guitar({guitar, addToCart} : {guitar : Guitar, addToCart: (item: Guitar) => void }) {
+// type separate
+type GuitarProps = {
+  guitar : Guitar, 
+  addToCart: (item: Guitar) => void 
+}
+
+export default function Guitar({guitar, addToCart}: GuitarProps) {
 
   const {name, image, description, price} = guitar
 
