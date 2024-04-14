@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Guitar, CartItem } from '../types'
+import { CartItem } from '../types'
 
 const useCart = () => {
 
@@ -16,14 +16,10 @@ const useCart = () => {
     localStorage.setItem('cart', JSON.stringify(cart))
   }, [cart])
 
-  // Limpiar el carrito
-  function clearCart() {
-    setCart([])
-  }
+  
 
   return {
-    cart,
-    clearCart,
+    cart
   }
 }
 

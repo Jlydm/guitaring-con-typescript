@@ -1,13 +1,11 @@
 import { useReducer } from 'react'
 import Header from './components/Header'
 import Guitar from './components/Guitar'
-import useCart from './hooks/useCart'
 import { cartReducer, initialState } from './reducers/cart-reducer'
 
 
 function App() {
 
-  const { clearCart} = useCart()
   const [state, dispatch] = useReducer(cartReducer, initialState)
 
   return (
@@ -15,7 +13,6 @@ function App() {
       <Header
         cart={state.cart}
         dispatch={dispatch}
-        clearCart={clearCart}
       />
       <main className="container-xl mt-5">
         <h2 className="text-center">Nuestra Colección</h2>

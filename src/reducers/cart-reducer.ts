@@ -101,10 +101,11 @@ export const cartReducer = (
     }
   }
 
+  // Limpiar el carrito
   if(action.type === 'clear-cart'){
-
-      return {
-          ...state,
-      }
+    return {
+      ...state,
+      cart: []
+    }
   }
 }
