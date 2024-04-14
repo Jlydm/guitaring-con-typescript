@@ -13,9 +13,15 @@ export type CartState = {
   cart: CartItem[]   
 }
 
+// Verificar si loalStorage tiene algo
+const initialCart = () : CartItem[] => {
+  const localStorageCart = localStorage.getItem('cart')
+  return localStorageCart ? JSON.parse(localStorageCart) : []
+}
+
 export const initialState : CartState = {
   data: db,
-  cart: []
+  cart: initialCart()
 }
 
 const MIN_ITEMS = 1
