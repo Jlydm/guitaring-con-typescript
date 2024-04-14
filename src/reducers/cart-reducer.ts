@@ -28,12 +28,11 @@ export const cartReducer = (
 
   if(action.type === 'add-to-cart'){
 
-  const itemExists = state.cart.find((guitar) => guitar.id === action.payload.item.id)
-  
-  let updateCart : CartItem[] = [] 
+    const itemExists = state.cart.find((guitar) => guitar.id === action.payload.item.id)
+    let updateCart : CartItem[] = [] 
 
-  // Comprobar si ya existe o no
-  if(itemExists) {
+    // Comprobar si ya existe o no
+    if(itemExists) {
     // Sumar un nuevo item
     updateCart = state.cart.map(item => {
       if(item.id === action.payload.item.id){
@@ -46,12 +45,11 @@ export const cartReducer = (
         return item
       }
     })
-  }else{
+  } else {
     // Agregar un nuevo item
     const newItem : CartItem = {...action.payload.item, quantity : 1}
     updateCart = [...state.cart, newItem]
   }
-
     return {
       ...state,
       cart: updateCart
@@ -59,9 +57,11 @@ export const cartReducer = (
   }
 
   if(action.type === 'remove-from-cart'){
-
+    // Eliminar item del carrito
+      const cart = state.cart.filter( item => item.id !== action.payload.id )
       return {
           ...state,
+          cart
       }
   }
 

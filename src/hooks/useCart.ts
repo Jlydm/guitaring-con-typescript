@@ -19,10 +19,7 @@ const useCart = () => {
     localStorage.setItem('cart', JSON.stringify(cart))
   }, [cart])
 
-  // Eliminar item del carrito
-  function removeFromCart(id : Guitar['id']){
-    setCart(prevCart => prevCart.filter(guitar => guitar.id !== id))
-  }
+  
 
   // Incrementar elementos
   function increaseQuantity(id : Guitar['id']){
@@ -59,7 +56,6 @@ const useCart = () => {
 
   return {
     cart,
-    removeFromCart,
     decreaseQuantity,
     increaseQuantity,
     clearCart,
