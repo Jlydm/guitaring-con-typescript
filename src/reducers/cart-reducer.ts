@@ -56,27 +56,49 @@ export const cartReducer = (
     }
   }
 
+  // Eliminar item del carrito
   if(action.type === 'remove-from-cart'){
-    // Eliminar item del carrito
-      const cart = state.cart.filter( item => item.id !== action.payload.id )
-      return {
-          ...state,
-          cart
-      }
+    const cart = state.cart.filter( item => item.id !== action.payload.id )
+    return {
+      ...state,
+      cart
+    }
   }
 
   if(action.type === 'decrease-quantity'){
 
-      return {
-          ...state,
+    // Decrementar elementos
+    const cart = state.cart.map( item => {
+      if(item.id === action.payload.id && item.quantity > MIN_ITEMS){
+        return{
+          ...item,
+          quantity: item.quantity - 1
+        }
       }
+      return item
+    })
+    return {
+      ...state,
+      cart
+    }
   }
 
+  // Incrementar elementos
   if(action.type === 'increase-quantity'){
-
-      return {
-          ...state,
+    const cart = state.cart.map( item => {
+      if(item.id === action.payload.id && item.quantity < MAX_ITEMS){
+        return {
+          ...item,
+          quantity: item.quantity + 1
+        }
       }
+      return item
+    })
+
+    return {
+      ...state,
+      cart
+    }
   }
 
   if(action.type === 'clear-cart'){
