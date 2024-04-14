@@ -19,22 +19,6 @@ const useCart = () => {
     localStorage.setItem('cart', JSON.stringify(cart))
   }, [cart])
 
-  function addToCart(item : Guitar) {
-    const itemExists = cart.findIndex((guitar) => guitar.id === item.id)
-    // Comprobar si ya existe o no
-    if(itemExists >= 0) {
-      // Sumar un nuevo item
-      if(cart[itemExists].quantity >= MAX_ITEMS) return
-      const updateCart = [...cart]
-      updateCart[itemExists].quantity++
-      setCart(updateCart)
-    }else{
-      // Agregar un nuevo item
-      const newItem : CartItem = {...item, quantity : 1}
-      setCart([...cart, newItem])
-    }
-  }
-
   // Eliminar item del carrito
   function removeFromCart(id : Guitar['id']){
     setCart(prevCart => prevCart.filter(guitar => guitar.id !== id))
@@ -79,7 +63,6 @@ const useCart = () => {
 
   return {
     cart,
-    addToCart,
     removeFromCart,
     decreaseQuantity,
     increaseQuantity,
